@@ -6,28 +6,17 @@ from fpdf import FPDF
 def json_to_pdf(json_file, pdf_file):
     # Leggi il contenuto del file JSON
     with open(json_file, 'r', encoding='utf-8') as f:
-        data = json.load(f)
+        data = json.load(f)     # carica i dati
 
-    # Crea un oggetto PDF
-    pdf = FPDF()
-    pdf.add_page()
-    pdf.set_font("Arial", size=12)
-
-    # Scrive ogni riga del JSON nel PDF
-    def write_line(key, value, indent=0):
-        line = f"{'  ' * indent}{key}: {value}" if not isinstance(value, dict) else f"{'  ' * indent}{key}:"
-        pdf.cell(0, 10, txt=line, ln=True)
-        if isinstance(value, dict):
-            for k, v in value.items():
-                write_line(k, v, indent + 1)
+    pdf = FPDF()                    # crea un pdf object
+    pdf.add_page()                  # aggiunge una pagina
+    pdf.set_font("Arial", size=12)  # setta il font
 
     for key, value in data.items():
-        write_line(key, value)
+        pdf.cell(0, 10, txt=f"{key}: {value}", ln=True)
 
-    # Salva il file PDF
     pdf.output(pdf_file)
     print(f"PDF creato: {pdf_file}")
-
 
 if __name__ == "__main__":
     if len(sys.argv) != 3:
