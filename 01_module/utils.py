@@ -1,6 +1,6 @@
 
 def square_area(l):
-    return l * l
+    return l**2
 
 def rect_area(b, h):
     return b * h

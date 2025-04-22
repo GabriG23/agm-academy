@@ -2,3 +2,5 @@ numpy
 matplotlib
 jupyter
 jupyterlab
+pylint
+pandas
