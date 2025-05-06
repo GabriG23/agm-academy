@@ -5,3 +5,4 @@ jupyterlab
 pylint
 pandas
 aiohttp
+django
