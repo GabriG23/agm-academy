@@ -1,10 +1,16 @@
 from django.shortcuts import render
 from .models import Product
+
 # Create your views here.
 
+def home(request):
+    return render(request, 'home.html')
+
+def cart(request):
+    cart_items = []  # oppure prendi i dati reali dal modello/sessione
+    cart_total = 0
+    return render(request, 'cart.html', {'cart': cart_items, 'cart_total': cart_total})
+
 def product_list(request):
-    '''
-    questa vista recupera tutti i prodotti dal databse e li passa al template HTML product_list.html
-    '''
     products = Product.objects.all()
-    return render(request, 'store/product_list.html', {'products': products})
+    return render(request, 'product_list.html', {'products': products})

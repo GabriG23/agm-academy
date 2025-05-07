@@ -15,11 +15,9 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
-from store.views import product_list
+from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('products/', product_list, name='product_list'),
+    path('', include('store.urls')),
 ]
-# l'URL products/ mappa alla vista product_list all'interno dell'applicazione store
