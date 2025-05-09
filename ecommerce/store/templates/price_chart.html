@@ -1,0 +1,8 @@
+{% extends 'home.html' %}
+
+{% block title %}Grafico Prezzi{% endblock %}
+
+{% block content %}
+<h1>Grafico Prezzi dei Prodotti</h1>
+<img src="data:image/png;base64,{{ graphic }}" alt="Grafico Prezzi" style="max-width: 100%; height: auto;">
+{% endblock %}
